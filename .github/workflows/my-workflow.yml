@@ -23,18 +23,20 @@ jobs:
           java-version: 17
           distribution: 'temurin'
           architecture: x64
-
+          
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+     
       - name: Build project
         run: gradle clean build
 
-     # - name: Make gradlew executable
-     #   run: chmod +x gradlew
+   
 
-    #  - name: Upload artifact
-    #    uses: actions/upload-artifact@v3
-    #    with:
-    #      name: testReport
-    #      path: build/jacoco/test.exec 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: jacocotestReport
+          path: build/jacoco/test.exec 
 
 
 
@@ -67,15 +69,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
          
-      #- name: Download artifact
-      #  uses: actions/download-artifact@v3
-      #  with:
-      #    name: testReport
-      #    path: build/jacoco
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: testReport
+          path: build/jacoco
  
-      - name: Run Coverage
+     # - name: Run Coverage
+     #   run: |
+     #     chmod +x gradlew
+     #     ./gradlew jacocoTestReport
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew          
+      - name: Run Jacoco tests
         run: |
-          chmod +x gradlew
           ./gradlew jacocoTestReport
 
       - name: Add coverage to PR
