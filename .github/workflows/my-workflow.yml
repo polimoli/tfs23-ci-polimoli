@@ -73,11 +73,15 @@ jobs:
         with:
           name: testReport
           path: build/jacoco
-
-      - name: Run Coverage
+      - name: Make gradlew executable
+        run: chmod +x gradlew          
+      - name: Run Jacoco tests
         run: |
-          chmod +x gradlew
           ./gradlew jacocoTestReport
+     # - name: Run Coverage
+     #   run: |
+     #     chmod +x gradlew
+     #     ./gradlew jacocoTestReport
 
       - name: Add coverage to PR
         id: jacoco
@@ -86,5 +90,5 @@ jobs:
           paths: ${{ github.workspace }}/build/reports/jacoco/test/jacocoTestReport.xml
           token: ${{ secrets.GITHUB_TOKEN }}
           title: Coverage Results
-          update-comment: true
+         # update-comment: true
 
