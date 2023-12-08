@@ -64,6 +64,9 @@ jobs:
       - name: Generate Jacoco report
         run: gradle jacocoTestReport
 
+      - name: Gradlew executable
+        run: chmod +x gradlew
+
       - name: Add coverage to PR
         id: jacoco
         uses: madrapps/jacoco-report@v1.6.1
