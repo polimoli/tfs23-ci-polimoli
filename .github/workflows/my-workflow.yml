@@ -27,8 +27,8 @@ jobs:
       - name: Build project
         run: gradle clean build
 
-      - name: Make gradlew executable
-        run: chmod +x gradlew
+     # - name: Make gradlew executable
+     #   run: chmod +x gradlew
 
     #  - name: Upload artifact
     #    uses: actions/upload-artifact@v3
