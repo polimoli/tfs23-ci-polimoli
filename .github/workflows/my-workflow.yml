@@ -6,8 +6,8 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions:
-  contents: read
+#permissions:
+ # contents: read
 
 jobs:
   build:
@@ -27,6 +27,9 @@ jobs:
 
       - name: Build project
         run: gradle clean build
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
@@ -51,7 +54,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: 'github-pr-check'
-          tool_name: 'reviewdog'
+          #tool_name: 'reviewdog'
           checkstyle_config: '${{ github.workspace }}/config/checkstyle/checkstyle.xml'
 
 
