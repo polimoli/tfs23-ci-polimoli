@@ -28,11 +28,11 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
-    #  - name: Upload artifact
-    #    uses: actions/upload-artifact@v3
-    #    with:
-    #      name: testReport
-    #      path: build/jacoco/test.exec 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: testReport
+          path: build/jacoco/test.exec 
 
 
 
