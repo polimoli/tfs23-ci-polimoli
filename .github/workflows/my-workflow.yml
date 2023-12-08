@@ -28,6 +28,9 @@ jobs:
       - name: Build project
         run: gradle clean build
 
+      - name: Generate Jacoco Report
+        run: ./gradlew jacocoTestReport
+
 
   checkstyle:
 
