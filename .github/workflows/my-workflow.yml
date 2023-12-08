@@ -51,7 +51,7 @@ jobs:
 
   coverage:
     runs-on: ubuntu-latest
-    permissions: write-all
+    #permissions: write-all
     needs: build
 
     steps:
