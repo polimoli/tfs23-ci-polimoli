@@ -27,9 +27,7 @@ jobs:
 
       - name: Build project
         run: gradle clean build
-  
-      - name: Gradlew executable
-        run: chmod +x gradlew
+
 
 
   checkstyle:
@@ -61,11 +59,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Generate Jacoco report
-        run: ./gradlew jacocoTestReport
-
-      - name: Gradlew executable
-        run: chmod +x gradlew
+      - name: Run Coverage
+        run: |
+          chmod +x gradlew
+          ./gradlew jacocoTestReport
 
       - name: Add coverage to PR
         id: jacoco
