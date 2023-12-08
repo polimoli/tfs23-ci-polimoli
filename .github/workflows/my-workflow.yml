@@ -29,8 +29,6 @@ jobs:
         run: gradle clean build
 
 
-
-
   checkstyle:
 
     runs-on: ubuntu-latest
@@ -69,6 +67,8 @@ jobs:
         with:
           paths: ${{ github.workspace }}/build/reports/jacoco/test/jacocoTest.xml
           token: ${{ secrets.GITHUB_TOKEN }}
+          min-coverage-overall: 40
+          min-coverage-changed-files: 60
           title: Coverage
           update-comment: true
 
