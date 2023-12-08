@@ -89,7 +89,8 @@ jobs:
         id: jacoco
         uses: madrapps/jacoco-report@v1.6.1
         with:
-          paths: ${{ github.workspace }}/build/reports/jacoco/test/html
+         # paths: ${{ github.workspace }}/build/reports/jacoco/test/html
           token: ${{ secrets.GITHUB_TOKEN }}
+          report_path: 'build/reports/jacoco/test/html'
           title: Coverage Results
          # update-comment: true
